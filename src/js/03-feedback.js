@@ -3,22 +3,22 @@ import throttle from "lodash.throttle";
 const LOCAL_KEY = "feedback-form-state";
 let formData = JSON.parse(localStorage.getItem(LOCAL_KEY)) || {};
 
-form = document.querySelector(".feedback-form");
+formInput = document.querySelector(".feedback-form");
 
-form.addEventListener("input", throttle(storageFormData, 500));
-form.addEventListener("submit", onFormSubmit);
+formInput.addEventListener("input", throttle(storageFormData, 500));
+formInput.addEventListener("submit", onFormSubmit);
 
 reloadPage();
 
 function storageFormData(e) {
-  formData[e.target.name] = e.target.value.trim();
+  formData[e.target.name] = e.target.value;
   localStorage.setItem(LOCAL_KEY, JSON.stringify(formData));
 }
 
 function onFormSubmit(e) {
   e.preventDefault();
   console.log(formData);
-  e.currentTarget.reset();
+  e.currentTarget;
   localStorage.removeItem(LOCAL_KEY);
   formData = {};
 }
