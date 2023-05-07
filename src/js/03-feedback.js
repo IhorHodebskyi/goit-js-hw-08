@@ -18,6 +18,7 @@ function storageFormData(e) {
 function onFormSubmit(e) {
   e.preventDefault();
   console.log(formData);
+  console.log(e.currentTarget);
   e.currentTarget.reset();
   localStorage.removeItem(LOCAL_KEY);
   formData = {};
